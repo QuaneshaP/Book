@@ -10,9 +10,18 @@
     padding-top: 50px;
     font-size: 1.25rem;
 }
-.add-button{
+button{
     height: 100px;
     color: black;
-    font-size: 1.24rem;
+    font-size: 1.5rem;
+    border-radius: 8px;
+    width: 200px;
+     
     
+}
+.btn-container{
+    padding-top: 50px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
 }

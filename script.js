@@ -1,12 +1,24 @@
 const myLibrary = [];
 const container = document.createElement("div");
 container.classList.add("container");
+
 const newButton = document.createElement("button");
 newButton.classList.add("add-button");
 newButton.innerText= "Add Book";
 
-document.body.appendChild(newButton);
+//delete button
+const deleteButton = document.createElement("button");
+deleteButton.classList.add("delete-button");
+deleteButton.innerText = "Remove a Book";
+
+//button container
+const btnContainer = document.createElement("div");
+btnContainer.classList.add("btn-container");
+btnContainer.appendChild(deleteButton);
+btnContainer.appendChild(newButton);
+
 document.body.appendChild(container);
+document.body.appendChild(btnContainer);
 
 //Books Constructor function
 function Book(title, author, pages, read){
@@ -45,4 +57,33 @@ newButton.addEventListener("click", () =>{
     addBookToLibrary(titles, authors, page, reads);
     addToDom();
 });
+
+deleteButton.addEventListener("click", () =>{
+    if(myLibrary.length === 0){
+        alert("You need to add books before you can delete");
+    }
+    else{
+        let delAuthor = prompt("Enter the Author of the book you want to delete. :");
+        let delTitle = prompt("Enter the title of the book you want to delete. :");
+
+        const newCon = document.createElement("div");
+
+        let arrLength = myLibrary.length;
+        for(let i = 0; i < arrLength; i++){
+            const obj = myLibrary[i];
+            if(obj.title === delTitle && obj.author === delAuthor){
+                myLibrary.splice(i, 1);
+                console.log(myLibrary);
+                container.innerHTML = "";
+                newCon.textContent = JSON.stringify(myLibrary);
+                container.appendChild(newCon);
+
+                
+            }
+        }
+
+    }
+
+   
+})
 console.log(myLibrary.length);
