@@ -65,7 +65,11 @@ function addToDom(){
         container.appendChild(readBtn);
 
         newDiv.classList.add("pages");
-        newDiv.textContent = JSON.stringify(obj);
+        newDiv.innerHTML = `
+        <p><strong>Title:</strong> ${obj.title}</p>
+        <p><strong>Author:</strong> ${obj.author}</p>
+        <p><strong>Pages:</strong> ${obj.pages}</p>
+        <p><strong>Read:</strong> ${obj.read ? 'Yes' : 'No'}</p>`;
         container.appendChild(newDiv);  
     }
 }
