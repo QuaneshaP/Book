@@ -28,6 +28,16 @@ function Book(title, author, pages, read){
     this.pages = pages;
     this.read = read;
 }
+
+Book.prototype.readStatus = function(){
+     if(this.read === true){
+        return this.read = false;
+     }
+     else{
+        return this.read = true;
+     }
+}
+
 //Create book objects and add to the array
 function addBookToLibrary(title, author, pages, read){
     const newBook = new Book(title, author, pages, read);
@@ -42,8 +52,20 @@ function addToDom(){
     container.innerHTML= "";
     for (let i = 0; i < myLibrary.length; i++){
         let newDiv = document.createElement("div");
+
+        let readBtn = document.createElement("button");
+        readBtn.innerHTML = "Toggle Read Status";
+
+        const obj = myLibrary[i];
+    
+        readBtn.addEventListener("click" , () =>{
+            console.log(obj.readStatus());
+            addToDom();
+        });
+        container.appendChild(readBtn);
+
         newDiv.classList.add("pages");
-        newDiv.textContent = JSON.stringify(myLibrary[i]);
+        newDiv.textContent = JSON.stringify(obj);
         container.appendChild(newDiv);  
     }
 }
@@ -83,7 +105,7 @@ deleteButton.addEventListener("click", () =>{
         }
 
     }
+  
+});
 
-   
-})
 console.log(myLibrary.length);
