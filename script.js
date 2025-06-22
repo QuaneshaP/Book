@@ -95,8 +95,11 @@ newButton.addEventListener("click", () =>{
     addToDom();
 });
 deleteButton.addEventListener("click", () =>{
-
-    let delAuthor = prompt("Enter the Author of the book you want to delete. :");
+    if(myLibrary.length === 0){
+        alert("You have to input a book before deleting!");
+    }
+    else{
+        let delAuthor = prompt("Enter the Author of the book you want to delete. :");
 
     delAuthor = delAuthor.toLowerCase();
     
@@ -112,7 +115,8 @@ deleteButton.addEventListener("click", () =>{
             return;  
         }
     }    
+    }
+
 });
 
 
-console.log(myLibrary.length);
